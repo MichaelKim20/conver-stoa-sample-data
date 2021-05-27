@@ -27,11 +27,11 @@ ts-node make-utxo-lookup ./old/recovery.json
 
 
 # 최신 버전의 boa-sdk-ts로 업그레이드하기
-
+stoa의 하부 폴더 mpm_modules 을 삭제하고, boa-sdk-ts의 버전을 변경한 후 npm_modules을 다시 설치한다. 
 
 # 새로운 블록데이터 생성하기
 
-블록 구조의 변경범위에 따라서 convert-blocks.ts를 수정해야 될 경우가 있따.
+블록 구조의 변경범위에 따라서 convert-blocks.ts를 수정해야 될 경우가 있다.
 
 
 ```sh
