@@ -88,7 +88,6 @@ let new_block_data: Array<any> = [];
             let txs = new Array<Transaction>();
             let merkle_tree: Array<Hash> = [];
             for (let tx of block.txs) {
-                let type = tx.type;
                 let inputs = new Array<TxInput>();
                 let outputs = new Array<TxOutput>();
                 for (let input of tx.inputs) {
@@ -99,10 +98,10 @@ let new_block_data: Array<any> = [];
                 for (let output of tx.outputs) {
                     let value = JSBI.BigInt(output.value);
                     let lock = Lock.reviver("", output.lock);
-                    outputs.push(new TxOutput(value, lock));
+                    outputs.push(new TxOutput(tx.type, value, lock));
                 }
                 let payload = new DataPayload(tx.payload.bytes);
-                let new_tx = new Transaction(type, inputs, outputs, payload);
+                let new_tx = new Transaction(inputs, outputs, payload);
                 txs.push(new_tx);
                 merkle_tree.push(hashFull(new_tx));
             }

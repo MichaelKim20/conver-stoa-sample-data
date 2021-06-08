@@ -16,7 +16,7 @@ import {
     SodiumHelper,
     Transaction,
     TxInput,
-    TxOutput, TxType,
+    TxOutput, OutputType,
     Unlock,
     JSBI
 } from 'boa-sdk-ts';
@@ -88,7 +88,6 @@ let new_block_data: Array<any> = [];
             let merkle_tree: Array<Hash> = [];
             let tx_idx = 0;
             for (let tx of block.txs) {
-                let type = tx.type;
                 let inputs = new Array<TxInput>();
                 let outputs = new Array<TxOutput>();
                 for (let input of tx.inputs) {
@@ -100,11 +99,11 @@ let new_block_data: Array<any> = [];
                 for (let output of tx.outputs) {
                     let value = JSBI.BigInt(output.value);
                     let lock = Lock.reviver("", output.lock);
-                    outputs.push(new TxOutput(value, lock));
+                    outputs.push(new TxOutput(tx.type, value, lock));
                     output_idx++;
                 }
                 let payload = new DataPayload(tx.payload.bytes);
-                let new_tx = new Transaction(type, inputs, outputs, payload);
+                let new_tx = new Transaction(inputs, outputs, payload);
 
                 txs.push(new_tx);
                 merkle_tree.push(hashFull(new_tx));
@@ -210,7 +209,7 @@ let new_block_data: Array<any> = [];
 
     let input = new TxInput(input_utxo, new Unlock(Buffer.concat([sig.data, pk.data])));
     let output = new TxOutput(BigInt(24400000000000), Lock.fromPublicKey(new PublicKey("GDPG22IINMKXTPYB3QQUGKUHQXBZKSN2XM4LACUANNJGRYYE6JTQFV6K")));
-    let new_tx = new Transaction(TxType.Payment, [input], [output], new DataPayload(Buffer.alloc(0)));
+    let new_tx = new Transaction(OutputType.Payment, [input], [output], new DataPayload(Buffer.alloc(0)));
 
     blocks[2].txs.push(new_tx);
     */
