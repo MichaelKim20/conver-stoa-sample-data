@@ -1,6 +1,5 @@
 import {
     Block,
-    DataPayload,
     Hash,
     hashFull,
     hashMulti,
@@ -28,8 +27,6 @@ import * as fs from 'fs';
 import { old_key } from "./old_key";
 import { new_key } from "./new_key";
 import {BOASodium} from "boa-sodium-ts";
-import {toString} from "ip";
-import {add} from "winston";
 
 let key_map: Map<string, string> = new Map<string, string>();
 for (let idx = 0; idx < old_key.length && idx < new_key.length; idx++)
@@ -97,19 +94,21 @@ let new_block_data: Array<any> = [];
 
                 let output_idx = 0;
                 for (let output of tx.outputs) {
+                    let type = output.type;
                     let value = JSBI.BigInt(output.value);
                     let lock = Lock.reviver("", output.lock);
-                    outputs.push(new TxOutput(tx.type, value, lock));
+                    let o = new TxOutput(type, value, lock);
+                    outputs.push(o);
                     output_idx++;
                 }
-                let payload = new DataPayload(tx.payload.bytes);
-                let new_tx = new Transaction(inputs, outputs, payload);
+                let new_tx = new Transaction(inputs, outputs, tx.payload.bytes);
 
                 txs.push(new_tx);
                 merkle_tree.push(hashFull(new_tx));
                 tx_idx++;
             }
             buildMerkleTree(merkle_tree);
+            //console.log(JSON.stringify(txs));
             new_block.merkle_tree = merkle_tree.map(n => n.toString());
             new_block.txs = txs.map(n => JSON.parse(JSON.stringify(n)));
             if (new_block.header.height == "0") {

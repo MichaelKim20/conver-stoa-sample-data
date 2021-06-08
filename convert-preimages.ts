@@ -1,6 +1,5 @@
 import {
     Block,
-    DataPayload,
     Hash,
     Signature,
     hashFull,
@@ -96,12 +95,13 @@ let new_block_data: Array<any> = [];
                 }
 
                 for (let output of tx.outputs) {
+                    let type = output.type;
                     let value = JSBI.BigInt(output.value);
                     let lock = Lock.reviver("", output.lock);
-                    outputs.push(new TxOutput(tx.type, value, lock));
+                    let o = new TxOutput(type, value, lock);
+                    outputs.push(o);
                 }
-                let payload = new DataPayload(tx.payload.bytes);
-                let new_tx = new Transaction(inputs, outputs, payload);
+                let new_tx = new Transaction(inputs, outputs, tx.payload.bytes);
                 txs.push(new_tx);
                 merkle_tree.push(hashFull(new_tx));
             }
