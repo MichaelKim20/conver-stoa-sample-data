@@ -101,7 +101,7 @@ let new_block_data: Array<any> = [];
                     let o = new TxOutput(type, value, lock);
                     outputs.push(o);
                 }
-                let new_tx = new Transaction(inputs, outputs, tx.payload.bytes);
+                let new_tx = new Transaction(inputs, outputs, tx.payload);
                 txs.push(new_tx);
                 merkle_tree.push(hashFull(new_tx));
             }

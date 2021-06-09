@@ -101,9 +101,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": ""
-                },
+                "payload": "",
                 "lock_height": "0"
             },
             {
@@ -174,9 +172,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": ""
-                },
+                "payload": "",
                 "lock_height": "0"
             }
         ],
@@ -204,7 +200,7 @@
                     {
                         "utxo": "0x57d4bdc5e60ac4b25f7a6502b15b66394ce4d45b48694518e09d382b9fbc9905be211e45973102609621773daac68357fe0dc0a6092a28920d33ef3194c9aed5",
                         "unlock": {
-                            "bytes": "yuH5/OkqydVRZNQJSu4GJIOQxGVKCUSDzFJTVYXp5A2+oenm8a9vTdftxTgKxlXJsbLdHw4CLUGKGKY+SA8xaA=="
+                            "bytes": "P2e+soBsI6Rd1Tvs+E0f1UYdVPm+qgC/KIDryv1pPARsSaG1YPBADz18kANC1rzXXzv7U2wKZItOZi+xdxSfPQ=="
                         },
                         "unlock_age": 0
                     }
@@ -411,9 +407,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": ""
-                },
+                "payload": "",
                 "lock_height": "0"
             },
             {
@@ -421,7 +415,7 @@
                     {
                         "utxo": "0x57d4bdc5e60ac4b25f7a6502b15b66394ce4d45b48694518e09d382b9fbc9905be211e45973102609621773daac68357fe0dc0a6092a28920d33ef3194c9aed5",
                         "unlock": {
-                            "bytes": "038ZroOBEdorcAdz333ZBYNDZvhSf4OOZIYVM/nwgARJEstIp+XNOG8uaU9+EHJueMh9nGBzfvYs5b/ikIwGeQ=="
+                            "bytes": "ZCbj6jQ6gtfWLq9p8YR17mb6dWYhHwrEALwsDe4rdQBuqYbQXf2YVswZVK6Gf/P2uHmIQAKbMiYRLgoACgSZ3Q=="
                         },
                         "unlock_age": 0
                     }
@@ -628,9 +622,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": ""
-                },
+                "payload": "",
                 "lock_height": "0"
             },
             {
@@ -638,7 +630,7 @@
                     {
                         "utxo": "0x57d4bdc5e60ac4b25f7a6502b15b66394ce4d45b48694518e09d382b9fbc9905be211e45973102609621773daac68357fe0dc0a6092a28920d33ef3194c9aed5",
                         "unlock": {
-                            "bytes": "4wXqYYCZb15XfbpDeT2wEQbtNCAIASoBdRm0AP+8pgV9exY5Zc36YtAjDQ3rB8A/0l0b7RXQtxM/TwZ1MMT5aw=="
+                            "bytes": "h0Iou0xr/1aIk+zZVjWKq9mbGHlKu4uM/gvEtdhNbQ5c1UEDav6wqdvnXeXdlx0Vu5eeijriL5WNZ9gRxR3urw=="
                         },
                         "unlock_age": 0
                     }
@@ -845,9 +837,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": ""
-                },
+                "payload": "",
                 "lock_height": "0"
             },
             {
@@ -855,7 +845,7 @@
                     {
                         "utxo": "0x57d4bdc5e60ac4b25f7a6502b15b66394ce4d45b48694518e09d382b9fbc9905be211e45973102609621773daac68357fe0dc0a6092a28920d33ef3194c9aed5",
                         "unlock": {
-                            "bytes": "JXcDU8uNFPkVy73jlDoTjKSg8SdCLgJShhzKkTd+vwFPJ8QY8rN+WC0hXRVjbrzxJkBZbz98kV8ZfJVJ2wRjVQ=="
+                            "bytes": "qiRbfUEkfcAz5+Sh66R99j99n1BpCGeyeecaVdXfzgi2EpAVn/KLg9wLFqpvgATbpX2+taIR/lxu8Z2RpT72LQ=="
                         },
                         "unlock_age": 0
                     }
@@ -1062,9 +1052,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": ""
-                },
+                "payload": "",
                 "lock_height": "0"
             },
             {
@@ -1072,7 +1060,7 @@
                     {
                         "utxo": "0x57d4bdc5e60ac4b25f7a6502b15b66394ce4d45b48694518e09d382b9fbc9905be211e45973102609621773daac68357fe0dc0a6092a28920d33ef3194c9aed5",
                         "unlock": {
-                            "bytes": "8Sdo3C03b7d5KlO/Qwi4cuZy7JtqRF8BqsynPyzOVAF6G+ZtAFvISjca14Ot2xEODg75nywMnHLUqyAC7wgLaw=="
+                            "bytes": "BtXdG5Jv0HFuHbp/4L2lY+2tScicD2Redn/rrKVNPw8wFObnAYCYvq/ABIUdNn6WhBm9FDWOfU4RUoz3V//COg=="
                         },
                         "unlock_age": 0
                     }
@@ -1279,9 +1267,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": ""
-                },
+                "payload": "",
                 "lock_height": "0"
             },
             {
@@ -1289,7 +1275,7 @@
                     {
                         "utxo": "0x57d4bdc5e60ac4b25f7a6502b15b66394ce4d45b48694518e09d382b9fbc9905be211e45973102609621773daac68357fe0dc0a6092a28920d33ef3194c9aed5",
                         "unlock": {
-                            "bytes": "yMwjrSK9gxnDJuv5Ef/OGIEsWnrf8VuIJ9NWOQD6sgBUP6kVCJJFJWpCaPkrM1yonKivw8mk2/Dg+HIm8jwzlg=="
+                            "bytes": "mWeDU6UOlG3+yyAwpoiR3Nppr52uluoI4DyOcjcOigceBuIg7iFV14kCaXERdT/pjR7crdxrVkLwtP2YJ/AyXg=="
                         },
                         "unlock_age": 0
                     }
@@ -1496,9 +1482,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": ""
-                },
+                "payload": "",
                 "lock_height": "0"
             },
             {
@@ -1506,7 +1490,7 @@
                     {
                         "utxo": "0x57d4bdc5e60ac4b25f7a6502b15b66394ce4d45b48694518e09d382b9fbc9905be211e45973102609621773daac68357fe0dc0a6092a28920d33ef3194c9aed5",
                         "unlock": {
-                            "bytes": "vfXJfKXtfYEoWeV0FTcynz+6rggwXG1IdN+TTkZ0fwPITIBmRsuyyXq+3TVFRfI72eFgCGt8QO0kMEPUdyRaWg=="
+                            "bytes": "KWC/SPTuKDLOe5uzpWCpncfp2f9u1SIF4CVOmk6AJwJkkZV31jlpCJSUsUDN0PulGoJPIx7QHDjhj6jPPXUBpw=="
                         },
                         "unlock_age": 0
                     }
@@ -1713,9 +1697,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": ""
-                },
+                "payload": "",
                 "lock_height": "0"
             },
             {
@@ -1723,7 +1705,7 @@
                     {
                         "utxo": "0x57d4bdc5e60ac4b25f7a6502b15b66394ce4d45b48694518e09d382b9fbc9905be211e45973102609621773daac68357fe0dc0a6092a28920d33ef3194c9aed5",
                         "unlock": {
-                            "bytes": "x4P5gISQ4plW6/gYYwbRalUam2+xxGkOraN9bzf16A9sKEVw/lNUTgXONFf3Umj8uxFUaRGX3Z2dCit5tBOk0A=="
+                            "bytes": "uBgKWkiZ9JJ4ywErttN/dot/DyKQjsHy9ylHg9KC1Q+eAWLdpUtOpoW+U/tSPteeuhFNhOPZW7UzasdeKM9MzA=="
                         },
                         "unlock_age": 0
                     }
@@ -1930,9 +1912,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": ""
-                },
+                "payload": "",
                 "lock_height": "0"
             }
         ],
@@ -1972,7 +1952,7 @@
                     {
                         "utxo": "0xf180e8aede3ea3f6db7872b2af4225f186abc4835e2f1108ea6ee1c56a8edb79c6460de4968696ec1f9a7fe5ab0008d33781a0031d79409825f2ea45df6f7fbd",
                         "unlock": {
-                            "bytes": "eZid7mkGwHQGiXW9PybWvZ/mwHRp/mxmDx8I32rrYgKXGWDiGjVM0a/DO4NC2I/2rV4YzR1XEMr8RH5XmaVqKA=="
+                            "bytes": "dxOnpm4DYTTo85Y5CAXViFxmNklxobdpldqChv964QRjJINFQstb1et2Nfgc8m/dpi65lzsEtxBIDIvQ1FiYXA=="
                         },
                         "unlock_age": 0
                     }
@@ -1995,9 +1975,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0+P0BBQkNERUZHSElKS0xNTk9QUVJTVFVWV1hZWltcXV5fYGFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6e3x9fn+AgYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrq+wsbKztLW2t7i5uru8vb6/wMHCw8TFxsfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/wABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0uLzAxMjM0NTY3ODk6Ozw9Pj9AQUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVpbXF1eX2BhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ent8fX5/gIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7/AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0+P0BBQkNERUZHSElKS0xNTk9QUVJTVFVWV1hZWltcXV5fYGFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6e3x9fn+AgYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrq+wsbKztLW2t7i5uru8vb6/wMHCw8TFxsfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/w=="
-                },
+                "payload": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0+P0BBQkNERUZHSElKS0xNTk9QUVJTVFVWV1hZWltcXV5fYGFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6e3x9fn+AgYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrq+wsbKztLW2t7i5uru8vb6/wMHCw8TFxsfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/wABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0uLzAxMjM0NTY3ODk6Ozw9Pj9AQUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVpbXF1eX2BhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ent8fX5/gIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7/AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0+P0BBQkNERUZHSElKS0xNTk9QUVJTVFVWV1hZWltcXV5fYGFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6e3x9fn+AgYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrq+wsbKztLW2t7i5uru8vb6/wMHCw8TFxsfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/w==",
                 "lock_height": "0"
             },
             {
@@ -2005,7 +1983,7 @@
                     {
                         "utxo": "0x896240cd0ef51fdfdff645bb146737f889b70a7d72f9ebb842f9a0c4705de884209c451ccdc15aace878d12dac85f0b5522bf2642204937c5e44944741a1928f",
                         "unlock": {
-                            "bytes": "+FBRLUJHf6RdE3insW75WsUVDqFEi4lk4NSKEW/0FQKJgt5SItIG6TF1JVzPGgpQZd9YqU6LSaGKmAVdFIsfog=="
+                            "bytes": "yZk1XygIdeCTewKDqs2cq/N8rvtsV5kxYaGIlzpyxwdE+E3SkQ6x4mcXu6YpeO5dypJvd4yW0foUCPmKwCjHzQ=="
                         },
                         "unlock_age": 0
                     }
@@ -2052,9 +2030,7 @@
                         }
                     }
                 ],
-                "payload": {
-                    "bytes": ""
-                },
+                "payload": "",
                 "lock_height": "0"
             }
         ],
