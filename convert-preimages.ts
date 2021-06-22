@@ -142,19 +142,9 @@ let new_block_data: Array<any> = [];
                 }
                 else {
                     let tx2 = blocks[find_value.block_idx].txs[find_value.tx_idx];
-                    let ox = -1;
-                    let i = 0;
-                    for (let o of tx2.outputs)
-                    {
-                        let address = (new PublicKey(o.lock.bytes)).toString();
-                        if (find_value.address === address)
-                        {
-                            ox = i;
-                            break;
-                        }
-                        i++;
-                    }
-
+                    let ox = (find_value.block_idx === 0)
+                        ? find_value.out_idx
+                        : tx2.outputs.findIndex(m => find_value.address === (new PublicKey(m.lock.bytes)).toString());
                     if (ox === -1)
                         console.error("Can not found utxo(address)");
                     tx_input.utxo = makeUTXOKey(hashFull(tx2), JSBI.BigInt(ox));
@@ -172,18 +162,10 @@ let new_block_data: Array<any> = [];
             }
             else {
                 let tx2 = blocks[find_value.block_idx].txs[find_value.tx_idx];
-                let ox = -1;
-                let i = 0;
-                for (let o of tx2.outputs)
-                {
-                    let address = (new PublicKey(o.lock.bytes)).toString();
-                    if (find_value.address === address)
-                    {
-                        ox = i;
-                        break;
-                    }
-                    i++;
-                }
+                let ox = (find_value.block_idx === 0)
+                    ? find_value.out_idx
+                    : tx2.outputs.findIndex(m => find_value.address === (new PublicKey(m.lock.bytes)).toString());
+
 
                 if (ox === -1)
                     console.error("Can not found utxo(address)");

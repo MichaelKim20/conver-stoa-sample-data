@@ -28,7 +28,7 @@ if (!Array.isArray(blocks))
 let block_idx = 0;
 let block_hashs: { block_idx: number; hash: Hash; merkle_tree: Hash[]; }[] = [];
 let ts_hashs: { block_idx: number; tx_idx: number, hash: Hash; }[] = [];
-let utxo_hashs: { block_idx: number; tx_idx: number, out_idx: number, hash: Hash; address: string }[] = [];
+let utxo_hashs: { block_idx: number; tx_idx: number, out_idx: number, hash: Hash; address: string; amount: string }[] = [];
 
 function buildMerkleTree (merkle_tree: Array<Hash>): Array<Hash> {
     let j = 0;
@@ -64,7 +64,8 @@ let print = (block: Block) => {
                 tx_idx: tx_idx,
                 out_idx: idx,
                 hash: utxo_hash,
-                address: address.toString()
+                address: address.toString(),
+                amount: output.value.toString()
             })
             idx++;
         }

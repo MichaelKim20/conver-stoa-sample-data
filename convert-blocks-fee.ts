@@ -17,7 +17,8 @@ import {
     TxInput,
     TxOutput, OutputType,
     Unlock,
-    JSBI
+    JSBI,
+    TxPayloadFee
 } from 'boa-sdk-ts';
 
 import {WK} from './WK';
@@ -71,6 +72,24 @@ let findByUTXO = (hash: string) => {
 }
 
 let new_block_data: Array<any> = [];
+
+function getFee (tx_size: number): JSBI
+{
+    let size = JSBI.BigInt(tx_size);
+    let factor = JSBI.BigInt(200);
+    let minimum = JSBI.BigInt(100_000);     // 0.01BOA
+    let medium = JSBI.multiply(size, factor);
+    if (JSBI.lessThan(medium, minimum))
+        medium = JSBI.BigInt(minimum);
+/*
+    let disparity = Math.random() * 200_00 - 100_00;
+
+    medium = JSBI.add(medium, JSBI.BigInt(disparity));
+    if (JSBI.lessThan(medium, minimum))
+        medium = JSBI.BigInt(minimum);
+*/
+    return medium;
+}
 
 (async () => {
     SodiumHelper.assign(new BOASodium());
@@ -141,6 +160,46 @@ let new_block_data: Array<any> = [];
 
         let tx_index = 0;
         for (let tx of block.txs) {
+
+            let in_sum = JSBI.BigInt(0);
+            for (let tx_input of tx.inputs) {
+                let find_value = findByUTXO(tx_input.utxo.toString());
+                if (find_value === undefined) {
+                    console.error("Can not found");
+                }
+                else {
+                    let tx2 = blocks[find_value.block_idx].txs[find_value.tx_idx];
+                    let ox = (find_value.block_idx === 0)
+                        ? find_value.out_idx
+                        : tx2.outputs.findIndex(m => find_value.address === (new PublicKey(m.lock.bytes)).toString());
+
+                    if (ox == -1)
+                        console.error("Can not found utxo(address)");
+
+                    let o = tx2.outputs[ox];
+                    in_sum = JSBI.add(in_sum, o.value);
+                }
+            }
+
+            if (JSBI.greaterThan(in_sum, JSBI.BigInt(0))) {
+                    let tx_size = Transaction.getEstimatedNumberOfBytes(tx.inputs.length, tx.outputs.length, tx.payload.length);
+                    let tx_fee = getFee(tx_size);
+                    let payload_fee = TxPayloadFee.getFee(tx.payload.length);
+                    let total_fee = JSBI.add(tx_fee, payload_fee);
+                    let amount = JSBI.subtract(in_sum, total_fee);
+
+                    let a = JSBI.divide(amount, JSBI.BigInt(tx.outputs.length));
+                    let b = JSBI.subtract(amount, JSBI.multiply(a, JSBI.BigInt(tx.outputs.length)));
+
+                    console.log("SUM", in_sum.toString(), a.toString(), b.toString());
+                    for (let o_idx = 0; o_idx < tx.outputs.length; o_idx++) {
+                        if (o_idx < tx.outputs.length - 1)
+                            tx.outputs[o_idx].value = a;
+                        else
+                            tx.outputs[o_idx].value = JSBI.add(a, b);
+                    }
+                }
+
             let in_index = 0;
             for (let tx_input of tx.inputs) {
                 let find_value = findByUTXO(tx_input.utxo.toString());
@@ -149,7 +208,6 @@ let new_block_data: Array<any> = [];
                 }
                 else {
                     let tx2 = blocks[find_value.block_idx].txs[find_value.tx_idx];
-
                     let ox = (find_value.block_idx === 0)
                         ? find_value.out_idx
                         : tx2.outputs.findIndex(m => find_value.address === (new PublicKey(m.lock.bytes)).toString());
@@ -160,21 +218,16 @@ let new_block_data: Array<any> = [];
                     tx_input.utxo = makeUTXOKey(hashFull(tx2), JSBI.BigInt(ox));
 
                     try {
+
                         let pk = new PublicKey(tx2.outputs[ox].lock.bytes);
                         let keypair = WK.keys(pk.toString());
-                        /*
-                        let scalar: Scalar = KeyPair.secretKeyToCurveScalar(keypair.secret)
-                        let pair: Pair = new Pair(scalar, scalar.toPoint());
-                        let sig = Schnorr.signPair<Transaction>(pair, tx);
-                        tx_input.unlock = Unlock.fromSignature(sig);
-                        */
+
                         let tx_hash = hashFull(tx);
                         let sig = keypair.secret.sign(tx_hash.data);
                         tx_input.unlock = Unlock.fromSignature(sig);
                     }
                     catch (error)
                     {
-                        console.log()
                         console.log(`${block_index}:${tx_index}:${in_index}`)
                     }
                 }
@@ -241,9 +294,5 @@ let new_block_data: Array<any> = [];
         block_hash = hashFull(block.header);
     }
 
-    //let block_objs = JSON.parse(JSON.stringify(blocks));
-    //for (let block of block_objs) {
-    //    block.header.validators = JSON.stringify(block.header.validators.storage);
-   // }
     console.log(JSON.stringify(blocks));
 })();
