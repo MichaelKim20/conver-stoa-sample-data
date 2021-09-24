@@ -15,22 +15,22 @@ import {
     SodiumHelper,
     Transaction,
     TxInput,
-    TxOutput, OutputType,
+    TxOutput,
+    OutputType,
     Unlock,
-    JSBI
-} from 'boa-sdk-ts';
+    JSBI,
+} from "boa-sdk-ts";
 
-import {WK} from './WK';
+import { WK } from "./WK";
 
-import * as fs from 'fs';
+import * as fs from "fs";
 
 import { old_key } from "./old_key";
 import { new_key } from "./new_key";
-import {BOASodium} from "boa-sodium-ts";
+import { BOASodium } from "boa-sodium-ts";
 
 let key_map: Map<string, string> = new Map<string, string>();
-for (let idx = 0; idx < old_key.length && idx < new_key.length; idx++)
-    key_map.set(old_key[idx], new_key[idx]);
+for (let idx = 0; idx < old_key.length && idx < new_key.length; idx++) key_map.set(old_key[idx], new_key[idx]);
 
 console.log("ts-node convert.ts Blocks Lookup");
 
@@ -40,26 +40,24 @@ if (process.argv.length < 4) {
     process.abort();
 }
 
-let old_blocks:Array<any> = JSON.parse(fs.readFileSync(process.argv[2], 'utf-8'));
-let utxo_lookup:Array<any> = JSON.parse(fs.readFileSync(process.argv[3], 'utf-8'));
-if (!Array.isArray(old_blocks))
-{
+let old_blocks: Array<any> = JSON.parse(fs.readFileSync(process.argv[2], "utf-8"));
+let utxo_lookup: Array<any> = JSON.parse(fs.readFileSync(process.argv[3], "utf-8"));
+if (!Array.isArray(old_blocks)) {
     console.log("블록파일은 배열형태여야 합니다.");
     process.abort();
 }
 
-if (!Array.isArray(utxo_lookup))
-{
+if (!Array.isArray(utxo_lookup)) {
     console.log("UTXO Look up 은 배열형태여야 합니다.");
     process.abort();
 }
 
-function buildMerkleTree (merkle_tree: Array<Hash>): Array<Hash> {
+function buildMerkleTree(merkle_tree: Array<Hash>): Array<Hash> {
     let j = 0;
     for (let length = merkle_tree.length; length > 1; length = Math.floor((length + 1) / 2)) {
         for (let i = 0; i < length; i += 2) {
             let i2 = Math.min(i + 1, length - 1);
-            merkle_tree.push(hashMulti(merkle_tree[j + i].data, merkle_tree[j + i2].data));
+            merkle_tree.push(hashMulti(merkle_tree[j + i], merkle_tree[j + i2]));
         }
         j += length;
     }
@@ -67,13 +65,13 @@ function buildMerkleTree (merkle_tree: Array<Hash>): Array<Hash> {
 }
 
 let findByUTXO = (hash: string) => {
-    return utxo_lookup.find(n => (n.hash === hash))
-}
+    return utxo_lookup.find((n) => n.hash === hash);
+};
 
 let new_block_data: Array<any> = [];
 
 (async () => {
-    SodiumHelper.assign(new BOASodium());
+    if (!SodiumHelper.isAssigned()) SodiumHelper.assign(new BOASodium());
     await SodiumHelper.init();
 
     // Replace Transaction
@@ -109,18 +107,17 @@ let new_block_data: Array<any> = [];
             }
             buildMerkleTree(merkle_tree);
             //console.log(JSON.stringify(txs));
-            new_block.merkle_tree = merkle_tree.map(n => n.toString());
-            new_block.txs = txs.map(n => JSON.parse(JSON.stringify(n)));
+            new_block.merkle_tree = merkle_tree.map((n) => n.toString());
+            new_block.txs = txs.map((n) => JSON.parse(JSON.stringify(n)));
             if (new_block.header.height == "0") {
                 new_block.header.validators = "[0]";
-                new_block.header.random_seed = (new Hash(Buffer.alloc(Hash.Width))).toString();
-            }
-            else {
+                new_block.header.random_seed = new Hash(Buffer.alloc(Hash.Width)).toString();
+            } else {
                 new_block.header.validators = "[252]";
                 new_block.header.random_seed = hashFull(block_idx).toString();
             }
             delete new_block.header.timestamp;
-            new_block.header.time_offset = block_idx * (10*60);
+            new_block.header.time_offset = block_idx * (10 * 60);
             new_block_data.push(new_block);
             block_idx++;
         }
@@ -130,14 +127,13 @@ let new_block_data: Array<any> = [];
     let blocks: Array<Block>;
 
     // Create Block Instance
-    blocks = new_block_data.map(n => Block.reviver("", n));
+    blocks = new_block_data.map((n) => Block.reviver("", n));
 
     // Fix values
     //  Transaction Input
     let block_index = 0;
     for (let block of blocks) {
-        if (JSBI.lessThan(block.header.height.value, JSBI.BigInt(1)))
-            continue;
+        if (JSBI.lessThan(block.header.height.value, JSBI.BigInt(1))) continue;
 
         let tx_index = 0;
         for (let tx of block.txs) {
@@ -146,16 +142,17 @@ let new_block_data: Array<any> = [];
                 let find_value = findByUTXO(tx_input.utxo.toString());
                 if (find_value === undefined) {
                     console.error("Can not found");
-                }
-                else {
+                } else {
                     let tx2 = blocks[find_value.block_idx].txs[find_value.tx_idx];
 
-                    let ox = (find_value.block_idx === 0)
-                        ? find_value.out_idx
-                        : tx2.outputs.findIndex(m => find_value.address === (new PublicKey(m.lock.bytes)).toString());
+                    let ox =
+                        find_value.block_idx === 0
+                            ? find_value.out_idx
+                            : tx2.outputs.findIndex(
+                                  (m) => find_value.address === new PublicKey(m.lock.bytes).toString()
+                              );
 
-                    if (ox == -1)
-                        console.error("Can not found utxo(address)");
+                    if (ox == -1) console.error("Can not found utxo(address)");
 
                     tx_input.utxo = makeUTXOKey(hashFull(tx2), JSBI.BigInt(ox));
 
@@ -171,11 +168,9 @@ let new_block_data: Array<any> = [];
                         let tx_hash = hashFull(tx);
                         let sig = keypair.secret.sign(tx_hash.data);
                         tx_input.unlock = Unlock.fromSignature(sig);
-                    }
-                    catch (error)
-                    {
-                        console.log()
-                        console.log(`${block_index}:${tx_index}:${in_index}`)
+                    } catch (error) {
+                        console.log();
+                        console.log(`${block_index}:${tx_index}:${in_index}`);
                     }
                 }
                 in_index++;
@@ -205,19 +200,17 @@ let new_block_data: Array<any> = [];
     //  Enrollment
     for (let block of blocks) {
         for (let en of block.header.enrollments) {
-
             let find_value = findByUTXO(en.utxo_key.toString());
             if (find_value === undefined) {
                 console.error("Can not found in Enrollment");
-            }
-            else {
+            } else {
                 let tx2 = blocks[find_value.block_idx].txs[find_value.tx_idx];
-                let ox = (find_value.block_idx === 0)
-                    ? find_value.out_idx
-                    : tx2.outputs.findIndex(m => find_value.address === (new PublicKey(m.lock.bytes)).toString());
+                let ox =
+                    find_value.block_idx === 0
+                        ? find_value.out_idx
+                        : tx2.outputs.findIndex((m) => find_value.address === new PublicKey(m.lock.bytes).toString());
 
-                if (ox == -1)
-                    console.error("Can not found utxo(address)");
+                if (ox == -1) console.error("Can not found utxo(address)");
                 en.utxo_key = makeUTXOKey(hashFull(tx2), JSBI.BigInt(ox));
             }
         }
@@ -244,6 +237,6 @@ let new_block_data: Array<any> = [];
     //let block_objs = JSON.parse(JSON.stringify(blocks));
     //for (let block of block_objs) {
     //    block.header.validators = JSON.stringify(block.header.validators.storage);
-   // }
+    // }
     console.log(JSON.stringify(blocks));
 })();

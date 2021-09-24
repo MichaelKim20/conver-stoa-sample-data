@@ -1,5 +1,4 @@
-export let old_key =
-[
+export let old_key = [
     "boa1xrxydyju2h8l3sfytnwd3l8j4gj4jsa0wj4pykt37yyggtl686ugy5wj2yt",
     "boa1xrzwvvw6l6d9k84ansqgs9yrtsetpv44wfn8zm9a7lehuej3ssskxth867s",
     "boa1xrdwry6fpk7a57k4gwyj3mwnf59w808nygtuxsgdrpmv4p7ua2hqx78z5en",
@@ -640,7 +639,7 @@ export let old_key =
     "boa1xrh966nr6cggq0kfy4c5gupp07s2ddz953rxpt0dyukdfsvwujvfx37hn4a",
     "boa1xrhx66hfn0dz8l2gaftvth0k2nrw0277zd6xyfu0rklff5tp77677ztnazs",
     "boa1xrh866ddtufg5qz8stzmppk52d7u4tupf5rzphht2xyy600vwp3ncuqayw0",
-    "boa1xrhg6656czd7u8yzzzyfewcuk35cp02mwyfzxaskgwyd44t3837jzc6aps3",
+    "boa1xrhg6656czd7u8yzzzyfewcuk35cp02mwyfzxaskgwyd44t8837jzc6aps3",
     "boa1xrhf66jhhqgva5kdhscvdcreyhv44uxv77y5jjy2gedq3cq4se4k2wqg8sq",
     "boa1xrh266pxd20c80ttyazsr95caytw9nawqh8l8pslekpdvdgjuvfqv2dhnms",
     "boa1xrht66rnrj2lftnj78cfp0d2zvckwtxp8dljl7rf3y7ry9hp7t6ycpk7ly8",
@@ -1386,4 +1385,4 @@ export let old_key =
     "boa1xrqeh66wqk9xqgvszg2j6uslg4mu8c6zprkyh0udu82595utsc02swymtdp",
     "boa1xrqec664xx77z4qa2wewkcs4ykmv8a6ky2xmvtjmezp7pyvvl9k4w89ym7p",
     "boa1xrqee666u3kva7kcpck987luczx7k0na8hh6z3lzfu6n5rx73t8sxgh4q63",
-]
+];
